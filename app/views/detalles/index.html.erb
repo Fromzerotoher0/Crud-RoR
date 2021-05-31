@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Detalles</h1>
+<div class="text-right mb-3 mr-3">
+<%= button_to  new_detalle_path, class: "btn btn-success",method: :get  do %>
+<i class="fas fa-plus"> Nuevo Detalle</i>
+<% end %>
+</div>
+ <table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+    <th scope="col">Cantidad</th>
+      <th scope="col">Prestamo</th>
+      <th scope="col">Libro</th>
+      <th  scope="col" > <span style="padding-left:30%">Accion</span></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @detalles.each do |detalle| %>
+      <tr>
+        <td><%= detalle.cantidad %></td>
+        <td><%= detalle.Prestamo_id %></td>
+        <td><%= detalle.libro_id %></td>
+        <td  style="padding-left:5%">
+
+  <%= link_to detalle , style: 'color: var(--blue); margin-right:5%' do %>
+    <i class="fas fa-info-circle fa-3x blue"></i>
+    <% end %>
+
+ 
+ <%= link_to edit_detalle_path(detalle), style: 'color: var(--yellow) ; margin-right:5%' do %>
+ <i class="fas fa-pen-square fa-3x yellow "></i>
+ <% end %>
+ 
+ <%= link_to  detalle, method: :delete, data: { confirm: 'Are you sure?' } , style: 'color: var(--red)' do %> 
+  <i class="fas fa-minus-square fa-3x"></i>  
+  <% end %>
+  </td>
+
+ </tr>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
